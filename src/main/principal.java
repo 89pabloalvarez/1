@@ -1,40 +1,9 @@
 package main;
 import java.util.Scanner;
-import java.text.DecimalFormat;
 import main.methods;
 
 public class principal {
-	
-	static double calculoPrecioPorEmpresa(int a, double b) {
-		return a*b;
-	}
-	
-	static double calculoPrecioConTD(int a, double b) {
-		 return (100-a)/100*b;
-	}
-	
-	static double calculoPrecioConTC(int a, double b) {
-		return ((a/100)*b)+b;
-	}
-	
-	static double calculoPrecioConBTC(double a, double b) {
-		return b/a;
-	}
 
-	static double calculoDifferenciaDePrecios(double a, double b) {
-		double diff = b-a;
-		if (diff < 0) {
-			diff=diff*(-1);
-		}
-		return diff;
-	}
-	
-	static String decimalFormated(double a) {
-		DecimalFormat formateador = new DecimalFormat("####.##");
-		return formateador.format (a);
-		//return Double.valueOf(formateador.format (a));
-	}
-	
 	public static void main(String[] args) {
 		
 		//////////////////////////////////////////////////////////////
@@ -66,34 +35,34 @@ public class principal {
 		///////////////////////////CÁLCULOS///////////////////////////
 		//////////////////////////////////////////////////////////////
 		
-		PrecioTotalAerolineas = calculoPrecioPorEmpresa(distanciaIngresada, PrecioKmAerolineas);
-		PrecioTotalLatam = calculoPrecioPorEmpresa(distanciaIngresada, PrecioKmLatam);
-		PrecioTDAerolineas = calculoPrecioConTD(descuentoTD, PrecioTotalAerolineas);
-		PrecioTDLatam = calculoPrecioConTD(descuentoTD, PrecioTotalLatam);
-		PrecioTCAerolineas = calculoPrecioConTC(interesTC, PrecioTotalAerolineas);
-		PrecioTCLatam = calculoPrecioConTC(interesTC, PrecioTotalLatam);
-		PrecioBTCAerolineas= calculoPrecioConBTC(PrecioBTC,PrecioTotalAerolineas);
-		PrecioBTCLatam= calculoPrecioConBTC(PrecioBTC,PrecioTotalLatam);
-		DifferenciaEntrePrecios = calculoDifferenciaDePrecios(PrecioTotalAerolineas,PrecioTotalLatam);
+		PrecioTotalAerolineas = methods.calculoPrecioPorEmpresa(distanciaIngresada, PrecioKmAerolineas);
+		PrecioTotalLatam = methods.calculoPrecioPorEmpresa(distanciaIngresada, PrecioKmLatam);
+		PrecioTDAerolineas = methods.calculoPrecioConTD(descuentoTD, PrecioTotalAerolineas);
+		PrecioTDLatam = methods.calculoPrecioConTD(descuentoTD, PrecioTotalLatam);
+		PrecioTCAerolineas = methods.calculoPrecioConTC(interesTC, PrecioTotalAerolineas);
+		PrecioTCLatam = methods.calculoPrecioConTC(interesTC, PrecioTotalLatam);
+		PrecioBTCAerolineas= methods.calculoPrecioConBTC(PrecioBTC,PrecioTotalAerolineas);
+		PrecioBTCLatam= methods.calculoPrecioConBTC(PrecioBTC,PrecioTotalLatam);
+		DifferenciaEntrePrecios = methods.calculoDifferenciaDePrecios(PrecioTotalAerolineas,PrecioTotalLatam);
 		
 		//////////////////////////////////////////////////////////////
 		//////////////////////PRINT DEL EJERCICIO/////////////////////
 		//////////////////////////////////////////////////////////////
 		System.out.println("KMs Ingresados: "+distanciaInput);
 		System.out.println();
-		System.out.println("Precio Aerolineas: $"+decimalFormated(PrecioTotalAerolineas));
-		System.out.println("a) Precio con tarjeta de débito: $"+decimalFormated(PrecioTDAerolineas));
-		System.out.println("b) Precio con tarjeta de crédito: $"+decimalFormated(PrecioTCAerolineas));
-		System.out.println("c) Precio pagando con bitcoin: $"+decimalFormated(PrecioBTCAerolineas));
-		System.out.println("d) Mostrar precio unitario: $"+decimalFormated(PrecioKmAerolineas));
+		System.out.println("Precio Aerolineas: $"+methods.decimalFormated(PrecioTotalAerolineas));
+		System.out.println("a) Precio con tarjeta de débito: $"+methods.decimalFormated(PrecioTDAerolineas));
+		System.out.println("b) Precio con tarjeta de crédito: $"+methods.decimalFormated(PrecioTCAerolineas));
+		System.out.println("c) Precio pagando con bitcoin: $"+methods.decimalFormated(PrecioBTCAerolineas));
+		System.out.println("d) Mostrar precio unitario: $"+methods.decimalFormated(PrecioKmAerolineas));
 		System.out.println();
-		System.out.println("Precio Latam: $"+decimalFormated(PrecioTotalLatam));
-		System.out.println("a) Precio con tarjeta de débito: $"+decimalFormated(PrecioTDLatam));
-		System.out.println("b) Precio con tarjeta de crédito: $"+decimalFormated(PrecioTCLatam));
-		System.out.println("c) Precio pagando con bitcoin: $"+decimalFormated(PrecioBTCLatam));
-		System.out.println("d) Mostrar precio unitario: $"+decimalFormated(PrecioKmLatam));
+		System.out.println("Precio Latam: $"+methods.decimalFormated(PrecioTotalLatam));
+		System.out.println("a) Precio con tarjeta de débito: $"+methods.decimalFormated(PrecioTDLatam));
+		System.out.println("b) Precio con tarjeta de crédito: $"+methods.decimalFormated(PrecioTCLatam));
+		System.out.println("c) Precio pagando con bitcoin: $"+methods.decimalFormated(PrecioBTCLatam));
+		System.out.println("d) Mostrar precio unitario: $"+methods.decimalFormated(PrecioKmLatam));
 		System.out.println();
-		System.out.println("La diferencia de precio es: $"+decimalFormated(DifferenciaEntrePrecios));
+		System.out.println("La diferencia de precio es: $"+methods.decimalFormated(DifferenciaEntrePrecios));
 		
 		
 		
